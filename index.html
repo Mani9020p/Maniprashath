@@ -777,7 +777,12 @@ section {
   gap: 4rem;
   align-items: start;
 }
-
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
 .about-left { }
 
 .about-intro {
@@ -1007,6 +1012,7 @@ footer {
 @media (max-width: 768px) {
   #hero { grid-template-columns: 1fr; }
   #about { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr !important; }
   .contact-grid { grid-template-columns: 1fr; }
   #projects .projects-grid { grid-template-columns: 1fr; }
   nav { padding: 0.75rem 1rem; }
@@ -1122,7 +1128,7 @@ footer {
     <h2 class="section-title">ABOUT ME</h2>
     <div class="section-line"></div>
   </div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+  <div class="about-grid">
     <div class="reveal">
       <p class="about-intro">
         BCA student specialising in DevOps & Automation at Rathinam College of Arts & Science. I build real infrastructure — from blockchain-secured sports platforms to self-service cloud provisioning portals. Passionate about pipeline engineering, cloud automation, and system reliability.
@@ -1145,7 +1151,7 @@ footer {
         </div>
         <div class="info-item">
           <div class="info-label">Location</div>
-          <div class="info-value">Chennai, IN</div>
+          <div class="info-value">Coimbatore, IN</div>
         </div>
         <div class="info-item">
           <div class="info-label">Degree</div>
@@ -1553,7 +1559,7 @@ Developer → Portal UI → Flask Backend
         <div class="contact-icon">📍</div>
         <div>
           <div class="contact-text-label">LOCATION</div>
-          <span class="contact-text-value">Chennai, Tamil Nadu, India</span>
+          <span class="contact-text-value">Coimbatore, Tamil Nadu, India</span>
         </div>
       </div>
       <a href="https://drive.google.com/file/d/1dgVTw4_SrO95W7qYjVlo25cZFa_x_ARm/view?usp=sharing" download class="btn-primary" style="margin-top:0.5rem; display:inline-block;">⬇ DOWNLOAD RESUME</a>
