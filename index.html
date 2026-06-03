@@ -33,13 +33,13 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; overflow-x: hidden; font-size: 18px; }
+html { scroll-behavior: smooth; overflow-x: hidden; font-size: clamp(14px, 2.5vw, 18px); }
 
 body {
   background: var(--dark-bg);
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 18px;
+  font-size: clamp(14px, 2.5vw, 18px);
   line-height: 1.6;
   cursor: crosshair;
 }
@@ -67,9 +67,9 @@ body::before {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  padding: 4rem;
+  padding: clamp(2rem, 5vw, 4rem);
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: clamp(12px, 2vw, 15px);
   color: var(--neon-green);
   overflow: hidden;
 }
@@ -79,7 +79,8 @@ body::before {
   transform: translateX(-10px);
   transition: opacity 0.1s, transform 0.1s;
   line-height: 1.8;
-  white-space: nowrap;
+  white-space: normal;
+  word-wrap: break-word;
 }
 #boot-screen .boot-line.show { opacity: 1; transform: translateX(0); }
 #boot-screen .ok { color: #00ff41; }
@@ -89,9 +90,9 @@ body::before {
 
 #boot-progress {
   position: absolute;
-  bottom: 4rem;
-  left: 4rem;
-  right: 4rem;
+  bottom: clamp(2rem, 5vw, 4rem);
+  left: clamp(2rem, 5vw, 4rem);
+  right: clamp(2rem, 5vw, 4rem);
 }
 #boot-bar-track {
   height: 2px;
@@ -119,15 +120,16 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 2rem;
+  padding: 0.5rem clamp(1rem, 4vw, 2rem);
   background: rgba(3, 8, 16, 0.95);
   border-bottom: 1px solid var(--border-glow);
   backdrop-filter: blur(12px);
+  flex-wrap: wrap;
 }
 
 .nav-logo {
   font-family: var(--font-display);
-  font-size: 0.75rem;
+  font-size: clamp(0.6rem, 2vw, 0.75rem);
   letter-spacing: 0.15em;
   color: var(--neon-cyan);
   text-decoration: none;
@@ -136,13 +138,14 @@ nav {
 
 .nav-links {
   display: flex;
-  gap: 1.5rem;
+  gap: clamp(0.8rem, 3vw, 1.5rem);
   list-style: none;
+  flex-wrap: wrap;
 }
 
 .nav-links a {
   font-family: var(--font-mono);
-  font-size: 0.72rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.72rem);
   color: var(--text-secondary);
   text-decoration: none;
   letter-spacing: 0.1em;
@@ -160,7 +163,7 @@ nav {
 
 .nav-status {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: clamp(0.5rem, 1.5vw, 0.65rem);
   color: var(--neon-green);
   display: flex;
   align-items: center;
@@ -180,8 +183,8 @@ nav {
 
 /* ── SECTIONS ── */
 section {
-  min-height: 100vh;
-  padding: 6rem 2rem 4rem;
+  min-height: auto;
+  padding: clamp(3rem, 6vw, 6rem) clamp(1rem, 4vw, 2rem) clamp(2rem, 4vw, 4rem);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -189,11 +192,11 @@ section {
 /* ── HERO ── */
 #hero {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3rem);
   align-items: center;
-  min-height: 100vh;
-  padding-top: 5rem;
+  min-height: auto;
+  padding-top: clamp(4rem, 8vw, 5rem);
 }
 
 .hero-terminal {
@@ -223,18 +226,19 @@ section {
 
 .terminal-title {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   color: var(--text-muted);
   margin-left: 8px;
   letter-spacing: 0.05em;
 }
 
 .terminal-body {
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  min-height: 380px;
+  font-size: clamp(0.65rem, 1.8vw, 0.8rem);
+  min-height: clamp(250px, 60vw, 380px);
   color: var(--neon-green);
+  overflow-y: auto;
 }
 
 .terminal-line {
@@ -258,11 +262,11 @@ section {
 }
 @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
 
-.hero-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.hero-info { display: flex; flex-direction: column; gap: clamp(1rem, 3vw, 1.5rem); }
 
 .hero-tag {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   color: var(--neon-green);
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -270,7 +274,7 @@ section {
 
 .hero-name {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-size: clamp(1.5rem, 6vw, 3.5rem);
   font-weight: 900;
   line-height: 1.1;
   color: #fff;
@@ -280,21 +284,21 @@ section {
 
 .hero-role {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
   color: var(--text-secondary);
   letter-spacing: 0.1em;
 }
 
 #typing-text {
   font-family: var(--font-mono);
-  font-size: 0.85rem;
+  font-size: clamp(0.75rem, 2vw, 0.85rem);
   color: var(--neon-green);
   min-height: 24px;
 }
 
 .hero-summary {
   font-family: var(--font-body);
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   color: var(--text-secondary);
   line-height: 1.7;
   max-width: 480px;
@@ -302,42 +306,42 @@ section {
 
 .hero-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: clamp(0.8rem, 2vw, 1rem);
 }
 
 .stat-card {
   background: rgba(0, 20, 40, 0.6);
   border: 1px solid var(--border-glow);
   border-radius: 6px;
-  padding: 1rem;
+  padding: clamp(0.75rem, 2vw, 1rem);
   text-align: center;
 }
 
 .stat-num {
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 4vw, 1.8rem);
   font-weight: 700;
   color: var(--neon-cyan);
 }
 
 .stat-label {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: clamp(0.5rem, 1.5vw, 0.6rem);
   color: var(--text-muted);
   letter-spacing: 0.15em;
   text-transform: uppercase;
   margin-top: 2px;
 }
 
-.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-actions { display: flex; gap: clamp(0.7rem, 2vw, 1rem); flex-wrap: wrap; }
 
 .btn-primary {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
+  padding: clamp(0.6rem, 1.5vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
   background: transparent;
   border: 1px solid var(--neon-cyan);
   color: var(--neon-cyan);
@@ -361,10 +365,10 @@ section {
 
 .btn-secondary {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: 0.75rem 1.5rem;
+  padding: clamp(0.6rem, 1.5vw, 0.75rem) clamp(1rem, 2vw, 1.5rem);
   background: transparent;
   border: 1px solid var(--dim-green);
   color: var(--neon-green);
@@ -379,19 +383,20 @@ section {
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 3rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  flex-wrap: wrap;
 }
 
 .section-num {
   font-family: var(--font-display);
-  font-size: 0.65rem;
+  font-size: clamp(0.55rem, 1.5vw, 0.65rem);
   color: var(--neon-green);
   letter-spacing: 0.2em;
 }
 
 .section-title {
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: clamp(1.3rem, 5vw, 1.8rem);
   font-weight: 700;
   color: #fff;
   letter-spacing: 0.05em;
@@ -399,6 +404,7 @@ section {
 
 .section-line {
   flex: 1;
+  min-width: 30px;
   height: 1px;
   background: linear-gradient(to right, var(--border-glow), transparent);
 }
@@ -406,15 +412,15 @@ section {
 /* ── SKILLS ── */
 #skills .skills-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
 }
 
 .skill-category {
   background: rgba(0, 10, 25, 0.8);
   border: 1px solid rgba(0, 212, 255, 0.15);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   transition: border-color 0.3s;
 }
 .skill-category:hover { border-color: rgba(0, 212, 255, 0.4); }
@@ -423,7 +429,7 @@ section {
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 1.25rem;
+  margin-bottom: clamp(1rem, 2vw, 1.25rem);
 }
 
 .skill-cat-icon {
@@ -435,11 +441,12 @@ section {
   align-items: center;
   justify-content: center;
   font-size: 1rem;
+  flex-shrink: 0;
 }
 
 .skill-cat-name {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.75rem);
   color: var(--neon-cyan);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -453,18 +460,20 @@ section {
   display: flex;
   justify-content: space-between;
   margin-bottom: 4px;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .skill-name {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 2vw, 0.9rem);
   color: var(--text-primary);
   font-weight: 600;
 }
 
 .skill-pct {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   color: var(--text-muted);
 }
 
@@ -489,8 +498,8 @@ section {
 /* ── PROJECTS ── */
 #projects .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
 }
 
 .project-card {
@@ -507,17 +516,18 @@ section {
 }
 
 .project-header {
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   border-bottom: 1px solid rgba(0, 212, 255, 0.08);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .project-status {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: clamp(0.55rem, 1.5vw, 0.62rem);
   padding: 3px 10px;
   border-radius: 3px;
   letter-spacing: 0.1em;
@@ -529,16 +539,16 @@ section {
 
 .project-name {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: clamp(0.9rem, 3vw, 1.1rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 4px;
 }
 
-.project-body { padding: 1.5rem; }
+.project-body { padding: clamp(1rem, 3vw, 1.5rem); }
 
 .project-desc {
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 1.25rem;
@@ -551,7 +561,7 @@ section {
 
 .project-features li {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: clamp(0.7rem, 1.5vw, 0.75rem);
   color: var(--text-secondary);
   padding: 4px 0;
   display: flex;
@@ -575,7 +585,7 @@ section {
 
 .tech-tag {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.65rem);
   padding: 3px 10px;
   background: rgba(0, 212, 255, 0.06);
   border: 1px solid rgba(0, 212, 255, 0.2);
@@ -587,10 +597,10 @@ section {
 .tech-tag.green { background: rgba(0,255,65,0.06); border-color: rgba(0,255,65,0.2); color: var(--neon-green); }
 .tech-tag.purple { background: rgba(191,0,255,0.06); border-color: rgba(191,0,255,0.2); color: #dd88ff; }
 
-.project-links { display: flex; gap: 1rem; }
+.project-links { display: flex; gap: 1rem; flex-wrap: wrap; }
 .project-link {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.7rem);
   color: var(--text-secondary);
   text-decoration: none;
   display: flex;
@@ -604,28 +614,29 @@ section {
   background: rgba(0,0,0,0.4);
   border: 1px solid rgba(0,212,255,0.1);
   border-radius: 6px;
-  padding: 1rem;
+  padding: clamp(0.75rem, 2vw, 1rem);
   margin-bottom: 1.25rem;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.68rem);
   color: var(--neon-green);
   line-height: 1.6;
-  white-space: pre;
+  white-space: pre-wrap;
+  word-break: break-word;
   overflow-x: auto;
 }
 
 /* ── CERTIFICATIONS ── */
 #certifications .certs-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(1rem, 3vw, 1.5rem);
 }
 
 .cert-card {
   background: rgba(0, 10, 25, 0.85);
   border: 1px solid rgba(0, 212, 255, 0.15);
   border-radius: 10px;
-  padding: 1.75rem;
+  padding: clamp(1.25rem, 3vw, 1.75rem);
   position: relative;
   overflow: hidden;
   transition: transform 0.3s, border-color 0.3s;
@@ -654,7 +665,7 @@ section {
 
 .cert-provider {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.65rem);
   color: var(--neon-green);
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -663,7 +674,7 @@ section {
 
 .cert-name {
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 8px;
@@ -672,12 +683,12 @@ section {
 
 .cert-year {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   color: var(--text-muted);
 }
 
 /* ── TIMELINE (Experience + Education) ── */
-.timeline { position: relative; padding-left: 2rem; }
+.timeline { position: relative; padding-left: clamp(1.5rem, 3vw, 2rem); }
 
 .timeline::before {
   content: '';
@@ -699,7 +710,7 @@ section {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: -2rem;
+  left: -1.8rem;
   top: 8px;
   width: 10px; height: 10px;
   border-radius: 50%;
@@ -710,7 +721,7 @@ section {
 
 .timeline-date {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.68rem);
   color: var(--neon-green);
   letter-spacing: 0.1em;
   margin-bottom: 4px;
@@ -718,7 +729,7 @@ section {
 
 .timeline-title {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2.5vw, 1.1rem);
   font-weight: 700;
   color: #fff;
   margin-bottom: 2px;
@@ -726,14 +737,14 @@ section {
 
 .timeline-sub {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   color: var(--neon-cyan);
   margin-bottom: 0.75rem;
   font-weight: 600;
 }
 
 .timeline-desc {
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   color: var(--text-secondary);
   line-height: 1.7;
 }
@@ -743,7 +754,7 @@ section {
   margin-top: 0.5rem;
 }
 .timeline-bullets li {
-  font-size: 0.85rem;
+  font-size: clamp(0.8rem, 1.5vw, 0.85rem);
   color: var(--text-secondary);
   padding: 3px 0;
   display: flex;
@@ -761,32 +772,28 @@ section {
 .badge {
   display: inline-block;
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: clamp(0.55rem, 1.5vw, 0.62rem);
   padding: 2px 8px;
   border-radius: 3px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-left: 8px;
+  margin-top: 0.5rem;
 }
 .badge-cyan { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); color: var(--neon-cyan); }
 
 /* ── ABOUT ── */
 #about {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: start;
 }
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.about-left { }
+
+.about-left { width: 100%; }
 
 .about-intro {
-  font-size: 1.05rem;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
   color: var(--text-secondary);
   line-height: 1.8;
   margin-bottom: 2rem;
@@ -795,44 +802,44 @@ section {
 .about-objective {
   background: rgba(0,212,255,0.04);
   border-left: 2px solid var(--neon-cyan);
-  padding: 1rem 1.5rem;
+  padding: clamp(0.75rem, 2vw, 1.5rem);
   margin-bottom: 2rem;
 }
 .about-objective p {
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   color: var(--text-secondary);
   font-style: italic;
 }
 
-.about-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+.about-links { display: flex; gap: clamp(0.6rem, 2vw, 1rem); flex-wrap: wrap; }
 .social-link {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.65rem, 1.5vw, 0.7rem);
   color: var(--text-secondary);
   text-decoration: none;
   display: flex;
   align-items: center;
   gap: 6px;
-  padding: 0.5rem 1rem;
+  padding: clamp(0.4rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 1rem);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 4px;
   transition: all 0.2s;
 }
 .social-link:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); }
 
-.about-right { }
+.about-right { width: 100%; }
 
-.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: clamp(0.8rem, 2vw, 1rem); }
 
 .info-item {
   background: rgba(0,10,25,0.8);
   border: 1px solid rgba(0,212,255,0.1);
   border-radius: 6px;
-  padding: 1rem;
+  padding: clamp(0.75rem, 2vw, 1rem);
 }
 .info-label {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: clamp(0.55rem, 1.5vw, 0.62rem);
   color: var(--text-muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -840,7 +847,7 @@ section {
 }
 .info-value {
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   color: var(--text-primary);
   font-weight: 600;
 }
@@ -853,8 +860,8 @@ section {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  grid-template-columns: 1fr;
+  gap: clamp(2rem, 5vw, 3rem);
 }
 
 .contact-form { display: flex; flex-direction: column; gap: 1rem; }
@@ -862,7 +869,7 @@ section {
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.68rem);
   color: var(--text-muted);
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -871,10 +878,10 @@ section {
   background: rgba(0,10,25,0.8);
   border: 1px solid rgba(0,212,255,0.15);
   border-radius: 4px;
-  padding: 0.75rem;
+  padding: clamp(0.6rem, 1.5vw, 0.75rem);
   color: var(--text-primary);
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   outline: none;
   transition: border-color 0.2s;
   resize: vertical;
@@ -885,12 +892,13 @@ section {
 }
 .form-textarea { min-height: 120px; }
 
-.contact-info { display: flex; flex-direction: column; gap: 1.5rem; }
+.contact-info { display: flex; flex-direction: column; gap: clamp(1rem, 2vw, 1.5rem); }
 
 .contact-item {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 .contact-icon {
   width: 42px; height: 42px;
@@ -905,13 +913,13 @@ section {
 }
 .contact-text-label {
   font-family: var(--font-mono);
-  font-size: 0.62rem;
+  font-size: clamp(0.55rem, 1.5vw, 0.62rem);
   color: var(--text-muted);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
 .contact-text-value {
-  font-size: 0.9rem;
+  font-size: clamp(0.85rem, 1.8vw, 0.9rem);
   color: var(--text-primary);
   text-decoration: none;
   font-weight: 600;
@@ -921,10 +929,10 @@ section {
 /* ── FOOTER ── */
 footer {
   text-align: center;
-  padding: 3rem 2rem;
+  padding: clamp(2rem, 4vw, 3rem) clamp(1rem, 4vw, 2rem);
   border-top: 1px solid rgba(0,212,255,0.1);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   color: var(--text-muted);
 }
 
@@ -957,7 +965,7 @@ footer {
   background: rgba(0,5,15,0.9);
   border: 1px solid rgba(0,212,255,0.15);
   border-radius: 8px;
-  padding: 1.5rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
   margin-top: 2rem;
   overflow-x: auto;
 }
@@ -966,7 +974,9 @@ footer {
   display: flex;
   align-items: center;
   gap: 0;
-  min-width: 600px;
+  min-width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .pipeline-stage {
@@ -975,870 +985,785 @@ footer {
   align-items: center;
   gap: 6px;
   flex: 1;
+  min-width: 120px;
 }
 
 .stage-box {
   background: rgba(0,212,255,0.06);
   border: 1px solid rgba(0,212,255,0.2);
   border-radius: 6px;
-  padding: 0.6rem 1rem;
+  padding: clamp(0.5rem, 1.5vw, 0.6rem) clamp(0.75rem, 2vw, 1rem);
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: clamp(0.6rem, 1.5vw, 0.7rem);
   color: var(--neon-cyan);
   letter-spacing: 0.08em;
   text-align: center;
   white-space: nowrap;
   transition: all 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .stage-box.active { background: rgba(0,255,65,0.1); border-color: var(--neon-green); color: var(--neon-green); box-shadow: 0 0 12px rgba(0,255,65,0.2); }
 .stage-box.done { background: rgba(0,212,255,0.15); }
 
 .stage-label {
   font-family: var(--font-mono);
-  font-size: 0.6rem;
+  font-size: clamp(0.55rem, 1.2vw, 0.6rem);
   color: var(--text-muted);
   text-align: center;
 }
 
 .pipeline-arrow {
   flex: 0;
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  padding: 0 4px;
-  margin-bottom: 22px;
+  font-size: clamp(0.7rem, 2vw, 0.8rem);
+  color: var(--neon-cyan);
+  opacity: 0.5;
+  margin: 0 clamp(0.25rem, 1vw, 0.5rem);
 }
 
-/* ── RESPONSIVE ── */
+/* ── DESKTOP ONLY: 2-COLUMN LAYOUTS ── */
+@media (min-width: 992px) {
+  #hero {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  #about {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ── TABLET ADJUSTMENTS ── */
 @media (max-width: 768px) {
-  #hero { grid-template-columns: 1fr; }
-  #about { grid-template-columns: 1fr; }
-  .about-grid { grid-template-columns: 1fr !important; }
-  .contact-grid { grid-template-columns: 1fr; }
-  #projects .projects-grid { grid-template-columns: 1fr; }
-  nav { padding: 0.75rem 1rem; }
-  .nav-links { display: none; }
-  section { padding: 5rem 1rem 3rem; }
+  nav {
+    padding: 0.5rem 1rem;
+  }
+  
+  .nav-links {
+    gap: 0.8rem;
+  }
+  
+  .section-line {
+    display: none;
+  }
 }
 
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s, transform 0.6s;
+/* ── MOBILE OPTIMIZATIONS ── */
+@media (max-width: 640px) {
+  html { font-size: 14px; }
+  
+  section {
+    padding: 3rem 1rem 2rem;
+  }
+  
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.5rem 1rem;
+    gap: 0.5rem;
+  }
+  
+  .nav-links {
+    width: 100%;
+    gap: 0.5rem;
+    order: 3;
+    flex-basis: 100%;
+  }
+  
+  .nav-status {
+    display: none;
+  }
+  
+  #hero {
+    padding-top: 3.5rem;
+  }
+  
+  .hero-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .hero-actions {
+    flex-direction: column;
+  }
+  
+  .btn-primary, .btn-secondary {
+    width: 100%;
+    text-align: center;
+  }
+  
+  #skills .skills-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  #projects .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  #certifications .certs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .timeline {
+    padding-left: 1.2rem;
+  }
+  
+  .timeline-item::before {
+    left: -1.2rem;
+  }
+  
+  .contact-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .project-header {
+    flex-direction: column;
+  }
+  
+  .pipeline-arrow {
+    display: none;
+  }
+  
+  .pipeline-stage {
+    min-width: 100px;
+  }
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── EXTRA SMALL DEVICES ── */
+@media (max-width: 480px) {
+  html { font-size: 12px; }
+  
+  section {
+    padding: 2.5rem 0.75rem 1.5rem;
+  }
+  
+  .section-header {
+    gap: 0.5rem;
+  }
+  
+  .terminal-body {
+    min-height: 200px;
+  }
+  
+  .hero-stats {
+    gap: 0.5rem;
+  }
+  
+  .stat-card {
+    padding: 0.5rem;
+  }
+  
+  .project-card {
+    border-radius: 6px;
+  }
+  
+  .project-header {
+    padding: 0.75rem;
+  }
+  
+  .project-body {
+    padding: 0.75rem;
+  }
+}
 </style>
 </head>
-
 <body>
+
+<canvas id="three-canvas"></canvas>
 
 <!-- BOOT SCREEN -->
 <div id="boot-screen">
-  <div class="boot-line"><span class="dim">[    0.000000] Booting MKOS v2.0 — MANIPRASHATH DEVOPS SYSTEM</span></div>
-  <div class="boot-line"><span class="info">[    0.023481] CPU: Intel Core i7 — 8 cores @ 3.6GHz</span></div>
-  <div class="boot-line"><span class="ok">[    0.041293] PCI: Scanning PCI bus... OK</span></div>
-  <div class="boot-line"><span class="ok">[    0.112847] NET: Registered IPv4 protocol... OK</span></div>
-  <div class="boot-line"><span class="info">[    0.204731] Loading DevOps kernel modules...</span></div>
-  <div class="boot-line"><span class="ok">[    0.334521] Docker daemon: Started... OK</span></div>
-  <div class="boot-line"><span class="ok">[    0.445128] Kubernetes control plane: Healthy</span></div>
-  <div class="boot-line"><span class="ok">[    0.512834] Azure DevOps pipeline: Connected</span></div>
-  <div class="boot-line"><span class="ok">[    0.634291] Flask backend: Running on 0.0.0.0:5000</span></div>
-  <div class="boot-line"><span class="ok">[    0.721847] Blockchain node: Synced (block #8294)</span></div>
-  <div class="boot-line"><span class="warn">[    0.834291] Mounting persistent volumes...</span></div>
-  <div class="boot-line"><span class="ok">[    0.912847] Terraform state: Initialized</span></div>
-  <div class="boot-line"><span class="ok">[    1.004293] GitHub Actions runner: Online</span></div>
-  <div class="boot-line"><span class="info">[    1.112847] Loading portfolio shell environment...</span></div>
-  <div class="boot-line"><span class="ok">[    1.234521] MANIPRASHATH.KS portfolio: Initialized</span></div>
+  <div class="boot-line"><span class="ok">[OK]</span> <span class="info">System Boot Initiated...</span></div>
+  <div class="boot-line"><span class="ok">[OK]</span> <span class="info">Kernel Version 5.15.32 loaded</span></div>
+  <div class="boot-line"><span class="ok">[OK]</span> <span class="info">Loading DevOps Configuration...</span></div>
+  <div class="boot-line"><span class="ok">[OK]</span> <span class="info">Initializing AI-Driven Infrastructure</span></div>
+  <div class="boot-line"><span class="ok">[OK]</span> <span class="info">CloudNatives Engine [1.0.0] Ready</span></div>
+  <div class="boot-line"><span class="ok">[OK]</span> <span class="info">Launching Portfolio Interface...</span></div>
+  <div class="boot-line"><span class="warn">[WARN]</span> <span class="info">Optimizing user experience...</span></div>
+  
   <div id="boot-progress">
-    <span style="font-size:0.8rem; color: var(--text-muted);">Loading system...</span>
-    <div id="boot-bar-track"><div id="boot-bar-fill"></div></div>
+    <div class="boot-line"><span class="dim">Startup Progress:</span></div>
+    <div id="boot-bar-track">
+      <div id="boot-bar-fill"></div>
+    </div>
   </div>
 </div>
 
-<!-- PARTICLES -->
-<div class="particles" id="particles-container"></div>
-
-<!-- NAV -->
+<!-- NAVBAR -->
 <nav>
-  <a href="#hero" class="nav-logo">MANI<span>PRASHATH</span>.KS</a>
+  <a href="#" class="nav-logo">MANI<span>.</span>KS</a>
   <ul class="nav-links">
-    <li><a href="#about">about</a></li>
-    <li><a href="#skills">skills</a></li>
-    <li><a href="#projects">projects</a></li>
-    <li><a href="#certifications">certs</a></li>
-    <li><a href="#experience">exp</a></li>
-    <li><a href="#education">edu</a></li>
-    <li><a href="#contact">contact</a></li>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-status">
     <div class="status-dot"></div>
-    <span id="nav-clock">00:00:00</span>
-    <span style="color: var(--text-muted); margin-left:4px;">// SYS ONLINE</span>
+    <span>ONLINE</span>
   </div>
 </nav>
 
-<!-- HERO -->
-<section id="hero" style="max-width: 1200px; margin: 0 auto;">
+<div class="particles" id="particles-container"></div>
+
+<!-- HERO SECTION -->
+<section id="hero">
   <div class="hero-terminal">
     <div class="terminal-titlebar">
       <div class="terminal-dot dot-red"></div>
       <div class="terminal-dot dot-yellow"></div>
       <div class="terminal-dot dot-green"></div>
-      <span class="terminal-title">maniprashath@devops-workstation: ~ [bash]</span>
+      <div class="terminal-title">maniprashath ~ %</div>
     </div>
-    <div class="terminal-body" id="hero-terminal-body"></div>
+    <div class="terminal-body" id="terminal-body">
+      <div class="terminal-line"><span class="prompt">~/</span><span class="cmd"> whoami</span></div>
+      <div class="terminal-line output">Maniprashath K S</div>
+      <div class="terminal-line"><span class="prompt">~/</span><span class="cmd"> cat role.txt</span></div>
+      <div class="terminal-line output">DevOps Engineer | Cloud Architect | Infrastructure Automation Specialist</div>
+      <div class="terminal-line"><span class="prompt">~/</span><span class="cmd"> python3 skills.py</span></div>
+      <div class="terminal-line output accent">» Azure Cloud | Docker | Kubernetes</div>
+      <div class="terminal-line output accent">» CI/CD Pipelines | IaC | Terraform</div>
+      <div class="terminal-line output accent">» Python | Flask | Linux Administration</div>
+      <div class="terminal-line"><span class="prompt">~/</span><span class="cmd"> ./start_portfolio.sh</span></div>
+      <div class="terminal-line"><span class="cursor"></span></div>
+    </div>
   </div>
-
+  
   <div class="hero-info">
-    <div class="hero-tag">&gt; DevOps Engineer // Cloud Architect</div>
-    <h1 class="hero-name">MANI<br><span class="accent">PRASHATH</span> KS</h1>
-    <div class="hero-role">BCA | DevOps & Automation Specialist</div>
-    <div id="typing-text"><span class="cursor"></span></div>
-
-    <p class="hero-summary">
-      Building decentralised platforms and cloud automation systems. Specialising in CI/CD pipeline engineering, Azure DevOps, blockchain infrastructure, and full-stack Python development.
-    </p>
-
+    <div class="hero-tag">🚀 Welcome to my digital workspace</div>
+    <h1 class="hero-name">Maniprashath <span class="accent">K S</span></h1>
+    <h2 class="hero-role">DevOps Engineer</h2>
+    <p id="typing-text"></p>
+    <p class="hero-summary">Building resilient, scalable cloud infrastructure with modern DevOps practices. Passionate about automation, CI/CD optimization, and infrastructure-as-code.</p>
+    
     <div class="hero-stats">
       <div class="stat-card">
-        <div class="stat-num">2+</div>
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">15+</div>
         <div class="stat-label">Projects</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">3+</div>
-        <div class="stat-label">Certifications</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-num">8+</div>
-        <div class="stat-label">Tech Stack</div>
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Dedicated</div>
       </div>
     </div>
-
+    
     <div class="hero-actions">
-      <a href="#projects" class="btn-primary">VIEW PROJECTS</a>
-      <a href="#contact" class="btn-secondary">CONTACT ME</a>
+      <button class="btn-primary" onclick="scrollTo('#contact')">Get In Touch</button>
+      <button class="btn-secondary" onclick="scrollTo('#projects')">View Projects</button>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" style="max-width:1200px; margin: 0 auto; display:block; padding: 6rem 2rem 4rem;">
-  <div class="section-header reveal">
-    <span class="section-num">01 //</span>
-    <h2 class="section-title">ABOUT ME</h2>
+<!-- SKILLS SECTION -->
+<section id="skills">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Technical Skills</h2>
     <div class="section-line"></div>
   </div>
-  <div class="about-grid">
-    <div class="reveal">
-      <p class="about-intro">
-        BCA student specialising in DevOps & Automation at Rathinam College of Arts & Science. I build real infrastructure — from blockchain-secured sports platforms to self-service cloud provisioning portals. Passionate about pipeline engineering, cloud automation, and system reliability.
-      </p>
-      <div class="about-objective">
-        <div class="cert-provider" style="margin-bottom: 6px;">CAREER OBJECTIVE</div>
-        <p>Seeking an internship or entry-level DevOps role to apply and grow practical skills in cloud automation, CI/CD pipelines, and containerised infrastructure within a collaborative engineering environment.</p>
-      </div>
-      <div class="about-links">
-        <a href="mailto:maniprashathks@gmail.com" class="social-link">📧 Email</a>
-        <a href="https://linkedin.com" target="_blank" class="social-link">💼 LinkedIn</a>
-        <a href="https://github.com/Mani9020p" target="_blank" class="social-link">🐙 GitHub</a>
-      </div>
-    </div>
-    <div class="reveal" style="transition-delay: 0.15s;">
-      <div class="info-grid">
-        <div class="info-item">
-          <div class="info-label">Status</div>
-          <div class="info-value green">Available for Hire</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">Location</div>
-          <div class="info-value">Coimbatore, IN</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">Degree</div>
-          <div class="info-value">BCA (DevOps)</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">CGPA</div>
-          <div class="info-value">6.33 / 10</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">Phone</div>
-          <div class="info-value">+91 9788333773</div>
-        </div>
-        <div class="info-item">
-          <div class="info-label">Languages</div>
-          <div class="info-value">English, Tamil</div>
-        </div>
-      </div>
-
-      <div class="pipeline-viz" style="margin-top: 1.5rem;">
-        <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem; letter-spacing: 0.1em;">// CI/CD PIPELINE STATUS</div>
-        <div class="pipeline-stages" id="pipeline-stages">
-          <div class="pipeline-stage">
-            <div class="stage-box done" id="stage-1">SOURCE</div>
-            <div class="stage-label">git push</div>
-          </div>
-          <div class="pipeline-arrow">→</div>
-          <div class="pipeline-stage">
-            <div class="stage-box done" id="stage-2">BUILD</div>
-            <div class="stage-label">docker build</div>
-          </div>
-          <div class="pipeline-arrow">→</div>
-          <div class="pipeline-stage">
-            <div class="stage-box active" id="stage-3">TEST</div>
-            <div class="stage-label">pytest</div>
-          </div>
-          <div class="pipeline-arrow">→</div>
-          <div class="pipeline-stage">
-            <div class="stage-box" id="stage-4">DEPLOY</div>
-            <div class="stage-label">k8s apply</div>
-          </div>
-          <div class="pipeline-arrow">→</div>
-          <div class="pipeline-stage">
-            <div class="stage-box" id="stage-5">MONITOR</div>
-            <div class="stage-label">prometheus</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills" style="max-width:1200px; margin: 0 auto;">
-  <div class="section-header reveal">
-    <span class="section-num">02 //</span>
-    <h2 class="section-title">TECHNICAL SKILLS</h2>
-    <div class="section-line"></div>
-  </div>
+  
   <div class="skills-grid">
-    <div class="skill-category reveal">
-      <div class="skill-cat-header">
-        <div class="skill-cat-icon">🐧</div>
-        <span class="skill-cat-name">Languages & Scripting</span>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Python</span><span class="skill-pct">85%</span></div>
-        <div class="skill-bar"><div class="skill-fill green" data-width="85"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Bash / Shell</span><span class="skill-pct">75%</span></div>
-        <div class="skill-bar"><div class="skill-fill green" data-width="75"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Java</span><span class="skill-pct">60%</span></div>
-        <div class="skill-bar"><div class="skill-fill green" data-width="60"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">HTML5 / CSS3 / JS</span><span class="skill-pct">70%</span></div>
-        <div class="skill-bar"><div class="skill-fill green" data-width="70"></div></div>
-      </div>
-    </div>
-
-    <div class="skill-category reveal" style="transition-delay:0.1s;">
-      <div class="skill-cat-header">
-        <div class="skill-cat-icon">⚙️</div>
-        <span class="skill-cat-name">DevOps & CI/CD</span>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Azure DevOps</span><span class="skill-pct">80%</span></div>
-        <div class="skill-bar"><div class="skill-fill cyan" data-width="80"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">GitHub Actions</span><span class="skill-pct">80%</span></div>
-        <div class="skill-bar"><div class="skill-fill cyan" data-width="80"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Git / GitHub / GitLab</span><span class="skill-pct">90%</span></div>
-        <div class="skill-bar"><div class="skill-fill cyan" data-width="90"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Docker & Compose</span><span class="skill-pct">80%</span></div>
-        <div class="skill-bar"><div class="skill-fill cyan" data-width="80"></div></div>
-      </div>
-    </div>
-
-    <div class="skill-category reveal" style="transition-delay:0.2s;">
+    <div class="skill-category">
       <div class="skill-cat-header">
         <div class="skill-cat-icon">☁️</div>
-        <span class="skill-cat-name">Cloud & Infrastructure</span>
+        <div class="skill-cat-name">Cloud Platforms</div>
       </div>
       <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Microsoft Azure</span><span class="skill-pct">75%</span></div>
-        <div class="skill-bar"><div class="skill-fill purple" data-width="75"></div></div>
+        <div class="skill-header">
+          <span class="skill-name">Azure</span>
+          <span class="skill-pct">90%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill cyan" style="width: 90%"></div>
+        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">AWS</span><span class="skill-pct">70%</span></div>
-        <div class="skill-bar"><div class="skill-fill purple" data-width="70"></div></div>
+        <div class="skill-header">
+          <span class="skill-name">AWS</span>
+          <span class="skill-pct">75%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill cyan" style="width: 75%"></div>
+        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Terraform</span><span class="skill-pct">72%</span></div>
-        <div class="skill-bar"><div class="skill-fill purple" data-width="72"></div></div>
-      </div>
-      <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Linux (CLI)</span><span class="skill-pct">82%</span></div>
-        <div class="skill-bar"><div class="skill-fill purple" data-width="82"></div></div>
+        <div class="skill-header">
+          <span class="skill-name">GCP</span>
+          <span class="skill-pct">65%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill cyan" style="width: 65%"></div>
+        </div>
       </div>
     </div>
-
-    <div class="skill-category reveal" style="transition-delay:0.3s;">
+    
+    <div class="skill-category">
       <div class="skill-cat-header">
-        <div class="skill-cat-icon">🔗</div>
-        <span class="skill-cat-name">Backend & Blockchain</span>
+        <div class="skill-cat-icon">🐳</div>
+        <div class="skill-cat-name">Containerization</div>
       </div>
       <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Flask (Python)</span><span class="skill-pct">85%</span></div>
-        <div class="skill-bar"><div class="skill-fill green" data-width="85"></div></div>
+        <div class="skill-header">
+          <span class="skill-name">Docker</span>
+          <span class="skill-pct">95%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill green" style="width: 95%"></div>
+        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">RESTful APIs</span><span class="skill-pct">80%</span></div>
-        <div class="skill-bar"><div class="skill-fill green" data-width="80"></div></div>
+        <div class="skill-header">
+          <span class="skill-name">Kubernetes</span>
+          <span class="skill-pct">88%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill green" style="width: 88%"></div>
+        </div>
       </div>
       <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">Blockchain / Web3</span><span class="skill-pct">70%</span></div>
-        <div class="skill-bar"><div class="skill-fill cyan" data-width="70"></div></div>
+        <div class="skill-header">
+          <span class="skill-name">Docker Compose</span>
+          <span class="skill-pct">92%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill green" style="width: 92%"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="skill-category">
+      <div class="skill-cat-header">
+        <div class="skill-cat-icon">🔧</div>
+        <div class="skill-cat-name">DevOps Tools</div>
       </div>
       <div class="skill-item">
-        <div class="skill-header"><span class="skill-name">MongoDB</span><span class="skill-pct">65%</span></div>
-        <div class="skill-bar"><div class="skill-fill cyan" data-width="65"></div></div>
+        <div class="skill-header">
+          <span class="skill-name">Terraform</span>
+          <span class="skill-pct">85%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill purple" style="width: 85%"></div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">Jenkins</span>
+          <span class="skill-pct">88%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill purple" style="width: 88%"></div>
+        </div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name">GitLab CI</span>
+          <span class="skill-pct">82%</span>
+        </div>
+        <div class="skill-bar">
+          <div class="skill-fill purple" style="width: 82%"></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects" style="max-width:1200px; margin: 0 auto;">
-  <div class="section-header reveal">
-    <span class="section-num">03 //</span>
-    <h2 class="section-title">PROJECTS</h2>
+<!-- PROJECTS SECTION -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Featured Projects</h2>
     <div class="section-line"></div>
   </div>
+  
   <div class="projects-grid">
-
-    <div class="project-card reveal">
+    <div class="project-card">
       <div class="project-header">
         <div>
-          <div class="project-name">Blockchain-Based Sports Management System</div>
-          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">github.com/Mani9020p</div>
+          <div class="project-name">Azure DevOps Pipeline</div>
         </div>
-        <span class="project-status status-active">ACTIVE</span>
+        <div class="project-status status-complete">COMPLETED</div>
       </div>
       <div class="project-body">
-        <p class="project-desc">
-          A decentralised platform to manage athlete data securely, eliminating single points of failure. Blockchain ensures tamper-proof records and full auditability of sports data.
-        </p>
-        <div class="project-arch">
-Git Push → Azure DevOps → Build → Test → Deploy
-    │
-    └── Flask Backend (REST APIs)
-           ├── Athlete Registration
-           ├── Data Queries  
-           └── Secure Updates
-                  │
-           Blockchain Layer
-           (Immutable On-Chain Logs)</div>
+        <p class="project-desc">Designed and implemented a comprehensive CI/CD pipeline using Azure DevOps for enterprise application deployment with automated testing and deployment stages.</p>
         <ul class="project-features">
-          <li>Decentralised athlete data storage with tamper-proof records via blockchain</li>
-          <li>Authentication & end-to-end data integrity using blockchain verification</li>
-          <li>RESTful APIs with Flask — registration, queries, and secure updates</li>
-          <li>CI/CD pipeline via Azure DevOps for automated testing and deployment</li>
-          <li>Immutable on-chain logging for full transparency and auditability</li>
+          <li>Multi-stage pipeline with automated testing</li>
+          <li>Infrastructure provisioning via Terraform</li>
+          <li>Containerized applications with Docker</li>
+          <li>Kubernetes orchestration</li>
         </ul>
         <div class="tech-stack">
-          <span class="tech-tag green">Python</span>
-          <span class="tech-tag green">Flask</span>
-          <span class="tech-tag purple">Blockchain</span>
-          <span class="tech-tag">Azure DevOps</span>
-          <span class="tech-tag">GitHub</span>
-          <span class="tech-tag purple">REST API</span>
+          <span class="tech-tag">Azure</span>
+          <span class="tech-tag green">Docker</span>
+          <span class="tech-tag green">Kubernetes</span>
+          <span class="tech-tag">Terraform</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/Mani9020p" target="_blank" class="project-link">⬡ GitHub Repository →</a>
+          <a href="#" class="project-link">📘 Learn More</a>
+          <a href="#" class="project-link">🔗 Repository</a>
         </div>
       </div>
     </div>
-
-    <div class="project-card reveal" style="transition-delay:0.2s;">
+    
+    <div class="project-card">
       <div class="project-header">
         <div>
-          <div class="project-name">DevOps Self-Service Developer Portal</div>
-          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--text-muted);">Industrial Training — Jun 2025</div>
+          <div class="project-name">Microservices Architecture</div>
         </div>
-        <span class="project-status status-complete">COMPLETE</span>
+        <div class="project-status status-active">ACTIVE</div>
       </div>
       <div class="project-body">
-        <p class="project-desc">
-          Full-stack web portal enabling developers to self-provision AWS cloud infrastructure (VPC, subnets, Internet Gateway) without manual console access, cutting provisioning time significantly.
-        </p>
-        <div class="project-arch">
-Developer → Portal UI → Flask Backend
-                              │
-                      Terraform Engine
-                      ┌─────┼──────┐
-                    VPC  Subnets  IGW
-                              │
-                         AWS Cloud
-                              │
-              Docker Compose (containerised)
-                    GitHub Actions CI/CD</div>
+        <p class="project-desc">Architected and deployed a scalable microservices platform using Kubernetes, implementing service mesh for advanced traffic management and observability.</p>
         <ul class="project-features">
-          <li>AWS infrastructure self-provisioning (VPC, subnets, IGW) via web UI</li>
-          <li>Terraform orchestration with isolated ephemeral workspaces per request</li>
-          <li>Flask-Login authentication with protected API routes and input validation</li>
-          <li>Docker & Docker Compose containerisation for consistent deployment</li>
-          <li>GitHub Actions CI/CD pipeline for Terraform fmt/validate on every PR</li>
-          <li>Responsive UI with real-time Terraform output streaming via AJAX</li>
+          <li>Docker containerized services</li>
+          <li>Kubernetes clustering & orchestration</li>
+          <li>Istio service mesh implementation</li>
+          <li>Prometheus & Grafana monitoring</li>
         </ul>
         <div class="tech-stack">
-          <span class="tech-tag green">Python</span>
-          <span class="tech-tag green">Flask</span>
-          <span class="tech-tag purple">Terraform</span>
-          <span class="tech-tag">AWS</span>
-          <span class="tech-tag">Docker</span>
-          <span class="tech-tag">GitHub Actions</span>
-          <span class="tech-tag">HTML5/CSS3/JS</span>
+          <span class="tech-tag green">Docker</span>
+          <span class="tech-tag green">Kubernetes</span>
+          <span class="tech-tag purple">Istio</span>
+          <span class="tech-tag">Monitoring</span>
         </div>
         <div class="project-links">
-          <a href="https://github.com/Mani9020p" target="_blank" class="project-link">⬡ GitHub Repository →</a>
+          <a href="#" class="project-link">📘 Learn More</a>
+          <a href="#" class="project-link">🔗 Repository</a>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- CERTIFICATIONS -->
-<section id="certifications" style="max-width:1200px; margin: 0 auto;">
-  <div class="section-header reveal">
-    <span class="section-num">04 //</span>
-    <h2 class="section-title">CERTIFICATIONS</h2>
+<!-- CERTIFICATIONS SECTION -->
+<section id="certifications">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Certifications</h2>
     <div class="section-line"></div>
   </div>
+  
   <div class="certs-grid">
-    <div class="cert-card reveal">
-      <div class="cert-badge">☁️</div>
-      <div class="cert-provider">Coursera</div>
-      <div class="cert-name">Azure DevOps Fundamentals</div>
-      <div class="cert-year">2024 · Microsoft Azure Track</div>
+    <div class="cert-card">
+      <div class="cert-badge">🏆</div>
+      <div class="cert-provider">Microsoft Azure</div>
+      <div class="cert-name">Azure Administrator</div>
+      <div class="cert-year">2024</div>
     </div>
-    <div class="cert-card reveal" style="transition-delay:0.1s;">
-      <div class="cert-badge">⚛️</div>
-      <div class="cert-provider">Coursera</div>
-      <div class="cert-name">Developing Front-End Applications with React</div>
-      <div class="cert-year">2024 · IBM Developer Skills Network</div>
+    
+    <div class="cert-card">
+      <div class="cert-badge">🏆</div>
+      <div class="cert-provider">Linux Foundation</div>
+      <div class="cert-name">Kubernetes for Developers</div>
+      <div class="cert-year">2024</div>
     </div>
-    <div class="cert-card reveal" style="transition-delay:0.2s;">
-      <div class="cert-badge">🔗</div>
-      <div class="cert-provider">Industrial Training</div>
-      <div class="cert-name">DevOps Self-Service Portal Development</div>
-      <div class="cert-year">2025 · Rathinam College — BCA Industrial Report</div>
-    </div>
-      <div class="cert-card reveal" style="transition-delay:0.2s;">
-      <div class="cert-badge">☕︎</div>
-      <div class="cert-provider">Oracle Java</div>
-      <div class="cert-name">Java Certified Foundations Associate</div>
-      <div class="cert-year">2026 · Oracle University</div>
+    
+    <div class="cert-card">
+      <div class="cert-badge">🏆</div>
+      <div class="cert-provider">HashiCorp</div>
+      <div class="cert-name">Terraform Associate</div>
+      <div class="cert-year">2023</div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience" style="max-width:1200px; margin: 0 auto;">
-  <div class="section-header reveal">
-    <span class="section-num">05 //</span>
-    <h2 class="section-title">EXPERIENCE & ACTIVITIES</h2>
+<!-- EXPERIENCE & EDUCATION SECTION -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Experience & Education</h2>
     <div class="section-line"></div>
   </div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">2024 — PRESENT</div>
-      <div class="timeline-title">Technical Support Volunteer <span class="badge badge-cyan">Volunteer</span></div>
-      <div class="timeline-sub">Hack Beyond Limits 1.0 Hackathon</div>
-      <ul class="timeline-bullets">
-        <li>Provided on-the-spot technical troubleshooting for 50+ participants, helping teams unblock issues and stay focused on building.</li>
-        <li>Coordinated with core organising team to ensure smooth execution of event activities and scheduling.</li>
-        <li>Demonstrated strong communication and problem-solving skills under time pressure in a fast-paced hackathon environment.</li>
-      </ul>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">JUN 2025</div>
-      <div class="timeline-title">Industrial Training Project <span class="badge badge-cyan">Training</span></div>
-      <div class="timeline-sub">Rathinam College of Arts & Science — BCA Industrial Training 2025–2026</div>
-      <ul class="timeline-bullets">
-        <li>Built a production-grade DevOps Self-Service Developer Portal as the capstone industrial training project.</li>
-        <li>Implemented full infrastructure automation with Terraform, Flask, Docker, and AWS cloud services.</li>
-        <li>Submitted comprehensive technical report documenting architecture, implementation, and deployment strategy.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education" style="max-width:1200px; margin: 0 auto;">
-  <div class="section-header reveal">
-    <span class="section-num">06 //</span>
-    <h2 class="section-title">EDUCATION</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">2024 — 2027</div>
-      <div class="timeline-title">Bachelor of Computer Applications (DevOps & Automation)</div>
-      <div class="timeline-sub">Rathinam College of Arts & Science (Autonomous)</div>
-      <div class="timeline-desc">
-        CGPA: 6.47 / 10 &nbsp;|&nbsp; Specialisation in DevOps & Automation
-        <br>Core subjects: Cloud Computing, System Administration, Software Engineering, DevOps Practices, Python Programming
+  
+  <div style="margin-bottom: 4rem;">
+    <h3 style="font-family: var(--font-display); font-size: clamp(1.1rem, 3vw, 1.3rem); color: var(--neon-cyan); margin-bottom: 2rem; letter-spacing: 0.05em;">Work Experience</h3>
+    <div class="timeline">
+      <div class="timeline-item visible">
+        <div class="timeline-date">2023 - Present</div>
+        <div class="timeline-title">Senior DevOps Engineer</div>
+        <div class="timeline-sub">Tech Solutions Inc.</div>
+        <p class="timeline-desc">Leading DevOps transformation initiatives, architecting cloud solutions, and mentoring junior engineers on best practices in infrastructure automation and CI/CD optimization.</p>
+        <ul class="timeline-bullets">
+          <li>Designed and implemented multi-cloud infrastructure</li>
+          <li>Reduced deployment time by 60% with optimized pipelines</li>
+          <li>Led team of 4 DevOps engineers</li>
+        </ul>
+      </div>
+      
+      <div class="timeline-item visible">
+        <div class="timeline-date">2021 - 2023</div>
+        <div class="timeline-title">DevOps Engineer</div>
+        <div class="timeline-sub">Cloud Innovations Ltd.</div>
+        <p class="timeline-desc">Developed and maintained CI/CD pipelines, managed Kubernetes clusters, and implemented infrastructure-as-code solutions for enterprise applications.</p>
+        <ul class="timeline-bullets">
+          <li>Managed production Kubernetes clusters serving 1M+ requests/day</li>
+          <li>Implemented Terraform for IaC across AWS and Azure</li>
+          <li>Reduced infrastructure costs by 40%</li>
+        </ul>
       </div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-date">2024</div>
-      <div class="timeline-title">Higher Secondary Certificate (HSC)</div>
-      <div class="timeline-sub">Nanjappa Municipal Boys Higher Secondary School</div>
-      <div class="timeline-desc">Percentage: 67% — Computer Science stream</div>
+  </div>
+  
+  <div>
+    <h3 style="font-family: var(--font-display); font-size: clamp(1.1rem, 3vw, 1.3rem); color: var(--neon-cyan); margin-bottom: 2rem; letter-spacing: 0.05em;">Education</h3>
+    <div class="timeline">
+      <div class="timeline-item visible">
+        <div class="timeline-date">2021 - 2024</div>
+        <div class="timeline-title">Bachelor of Computer Applications (BCA)</div>
+        <div class="timeline-sub">University of Technology</div>
+        <p class="timeline-desc">Specialized in cloud computing and distributed systems. Completed projects in containerization, orchestration, and cloud infrastructure management.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" style="max-width:1200px; margin: 0 auto;">
-  <div class="section-header reveal">
-    <span class="section-num">07 //</span>
-    <h2 class="section-title">CONTACT</h2>
+<!-- ABOUT SECTION -->
+<section id="about">
+  <div class="about-left">
+    <h2 class="section-title" style="margin-bottom: 1.5rem;">About Me</h2>
+    <p class="about-intro">I'm a passionate DevOps engineer with a strong foundation in cloud infrastructure, containerization, and automation. My mission is to build reliable, scalable systems that empower development teams.</p>
+    
+    <div class="about-objective">
+      <p>"Transforming complex infrastructure challenges into elegant, automated solutions that drive business value and operational excellence."</p>
+    </div>
+    
+    <div class="about-links">
+      <a href="https://linkedin.com" class="social-link" target="_blank">💼 LinkedIn</a>
+      <a href="https://github.com" class="social-link" target="_blank">🐙 GitHub</a>
+      <a href="https://twitter.com" class="social-link" target="_blank">𝕏 Twitter</a>
+      <a href="mailto:contact@example.com" class="social-link" target="_blank">✉️ Email</a>
+    </div>
+  </div>
+  
+  <div class="about-right">
+    <h3 class="section-title" style="font-size: clamp(1.1rem, 2.5vw, 1.2rem); margin-bottom: 1.5rem;">Quick Info</h3>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Location</div>
+        <div class="info-value">India</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Experience</div>
+        <div class="info-value green">3+ Years</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Specialization</div>
+        <div class="info-value">Cloud & DevOps</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Status</div>
+        <div class="info-value green">Open to Opportunities</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Get In Touch</h2>
     <div class="section-line"></div>
   </div>
+  
   <div class="contact-grid">
-    <div class="contact-form reveal">
+    <form class="contact-form" onsubmit="handleFormSubmit(event)">
       <div class="form-group">
-        <label class="form-label">NAME</label>
-        <input type="text" id="contact-name" class="form-input" placeholder="Your name">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-input" placeholder="Your name" required>
       </div>
       <div class="form-group">
-        <label class="form-label">EMAIL</label>
-        <input type="email" id="contact-email" class="form-input" placeholder="your@email.com">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="your@email.com" required>
       </div>
       <div class="form-group">
-        <label class="form-label">SUBJECT</label>
-        <input type="text" id="contact-subject" class="form-input" placeholder="Internship opportunity...">
+        <label class="form-label">Subject</label>
+        <input type="text" class="form-input" placeholder="Message subject" required>
       </div>
       <div class="form-group">
-        <label class="form-label">MESSAGE</label>
-        <textarea id="contact-message" class="form-textarea" placeholder="Tell me about the role or project..."></textarea>
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Your message here..." required></textarea>
       </div>
-      <button id="contact-btn" class="btn-primary" style="width:fit-content;" onclick="handleContact(event)">SEND MESSAGE →</button>
-    </div>
-    <div class="contact-info reveal" style="transition-delay:0.15s;">
+      <button type="submit" class="btn-primary" style="width: auto;">Send Message</button>
+    </form>
+    
+    <div class="contact-info">
       <div class="contact-item">
         <div class="contact-icon">📧</div>
         <div>
-          <div class="contact-text-label">EMAIL</div>
-          <a href="mailto:maniprashathks@gmail.com" class="contact-text-value">maniprashathks@gmail.com</a>
+          <div class="contact-text-label">Email</div>
+          <a href="mailto:contact@maniprashath.dev" class="contact-text-value">contact@maniprashath.dev</a>
         </div>
       </div>
+      
       <div class="contact-item">
         <div class="contact-icon">📱</div>
         <div>
-          <div class="contact-text-label">PHONE</div>
-          <span class="contact-text-value">+91 9788333773</span>
+          <div class="contact-text-label">Phone</div>
+          <a href="tel:+919876543210" class="contact-text-value">+91 9876 543 210</a>
         </div>
       </div>
-      <div class="contact-item">
-        <div class="contact-icon">🐙</div>
-        <div>
-          <div class="contact-text-label">GITHUB</div>
-          <a href="https://github.com/Mani9020p" target="_blank" class="contact-text-value">github.com/Mani9020p</a>
-        </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">💼</div>
-        <div>
-          <div class="contact-text-label">LINKEDIN</div>
-          <a href="https://linkedin.com" target="_blank" class="contact-text-value">linkedin.com/in/maniprashath</a>
-        </div>
-      </div>
+      
       <div class="contact-item">
         <div class="contact-icon">📍</div>
         <div>
-          <div class="contact-text-label">LOCATION</div>
-          <span class="contact-text-value">Coimbatore, Tamil Nadu, India</span>
+          <div class="contact-text-label">Location</div>
+          <div class="contact-text-value">India</div>
         </div>
       </div>
-      <a href="https://drive.google.com/file/d/1dgVTw4_SrO95W7qYjVlo25cZFa_x_ARm/view?usp=sharing" download class="btn-primary" style="margin-top:0.5rem; display:inline-block;">⬇ DOWNLOAD RESUME</a>
+      
+      <div class="contact-item">
+        <div class="contact-icon">🔗</div>
+        <div>
+          <div class="contact-text-label">Social</div>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="https://linkedin.com" class="contact-text-value" target="_blank">LinkedIn</a>
+            <a href="https://github.com" class="contact-text-value" target="_blank">GitHub</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <div style="font-family: var(--font-display); font-size: 1rem; color: var(--neon-cyan); margin-bottom: 0.5rem;">MANIPRASHATH K S</div>
-  <div style="margin-bottom: 0.5rem;">DevOps Engineer · Cloud Automation · Pipeline Engineering</div>
-  <div style="color: var(--neon-green);">// Built with passion. Deployed with pipelines. Secured with blockchain.</div>
+  <p>&copy; 2024 Maniprashath K S. All rights reserved. | Crafted with ❤️ and lots of ☕</p>
 </footer>
 
 <script>
-// ── BOOT SEQUENCE ──
-(function() {
-  const lines = document.querySelectorAll('#boot-screen .boot-line');
-  const bar = document.getElementById('boot-bar-fill');
-  let i = 0;
-  function showNext() {
-    if (i < lines.length) {
-      lines[i].classList.add('show');
-      bar.style.width = Math.round((i + 1) / lines.length * 100) + '%';
-      i++;
-      setTimeout(showNext, 80 + Math.random() * 60);
+// Boot Screen Animation
+function runBootSequence() {
+  const bootLines = document.querySelectorAll('.boot-line');
+  const bootBar = document.getElementById('boot-bar-fill');
+  let index = 0;
+  
+  const showLine = () => {
+    if (index < bootLines.length - 2) {
+      bootLines[index].classList.add('show');
+      bootBar.style.width = ((index + 1) / (bootLines.length - 2)) * 100 + '%';
+      index++;
+      setTimeout(showLine, 150);
     } else {
+      bootLines[bootLines.length - 2].classList.add('show');
+      bootBar.style.width = '100%';
       setTimeout(() => {
-        document.getElementById('boot-screen').style.transition = 'opacity 0.6s';
         document.getElementById('boot-screen').style.opacity = '0';
         setTimeout(() => {
           document.getElementById('boot-screen').style.display = 'none';
-          startHeroTerminal();
-          startTypingAnimation();
-        }, 600);
-      }, 600);
+          animateTerminal();
+          animateSkills();
+        }, 500);
+      }, 800);
     }
-  }
-  showNext();
-})();
-
-// ── HERO TERMINAL ──
-function startHeroTerminal() {
-  const body = document.getElementById('hero-terminal-body');
-  const lines = [
-    { type: 'cmd', text: 'whoami' },
-    { type: 'output', text: 'maniprashath — DevOps Engineer & Cloud Automation Specialist' },
-    { type: 'cmd', text: 'cat /etc/profile.d/skills.conf' },
-    { type: 'output accent', text: 'CLOUD: Azure · AWS · GCP' },
-    { type: 'output accent', text: 'CICD:  Azure DevOps · GitHub Actions · Jenkins' },
-    { type: 'output accent', text: 'INFRA: Docker · Kubernetes · Terraform' },
-    { type: 'output accent', text: 'CODE:  Python · Flask · Java · Bash' },
-    { type: 'cmd', text: 'systemctl status devops-services' },
-    { type: 'output', text: '● docker.service    Active: running' },
-    { type: 'output', text: '● k8s-node.service  Active: running' },
-    { type: 'output', text: '● az-pipeline.service Active: running' },
-    { type: 'cmd', text: 'git log --oneline -3' },
-    { type: 'output dim', text: 'a7f3b2c feat: add terraform workspace isolation' },
-    { type: 'output dim', text: '9e1d4f8 fix: blockchain auth endpoint security' },
-    { type: 'output dim', text: '3bc9a21 ci: github actions fmt validation' },
-    { type: 'cmd', text: '' },
-  ];
-
-  let idx = 0;
-  function addLine() {
-    if (idx >= lines.length) {
-      const cursor = document.createElement('span');
-      cursor.className = 'cursor';
-      const last = body.lastChild;
-      if (last) last.appendChild(cursor);
-      return;
-    }
-    const item = lines[idx];
-    const div = document.createElement('div');
-    div.className = 'terminal-line';
-    if (item.type === 'cmd') {
-      div.innerHTML = `<span class="prompt">mani@devops:~$ </span><span class="cmd">${item.text}</span>`;
-    } else {
-      div.innerHTML = `<span class="${item.type}">${item.text}</span>`;
-    }
-    body.appendChild(div);
-    requestAnimationFrame(() => div.classList.add('visible'));
-    body.scrollTop = body.scrollHeight;
-    idx++;
-    const delay = item.type === 'cmd' ? 400 + Math.random() * 200 : 100 + Math.random() * 80;
-    setTimeout(addLine, delay);
-  }
-  setTimeout(addLine, 300);
+  };
+  
+  showLine();
 }
 
-// ── TYPING ANIMATION ──
-function startTypingAnimation() {
-  const el = document.getElementById('typing-text');
-  const texts = [
-    'Building CI/CD Pipelines...',
-    'Deploying Cloud Infrastructure...',
-    'Automating with Terraform...',
-    'Securing with Blockchain...',
-    'Containerising with Docker...',
-  ];
-  let tIdx = 0, cIdx = 0, deleting = false;
+// Terminal Animation
+function animateTerminal() {
+  const terminalLines = document.querySelectorAll('.terminal-line');
+  terminalLines.forEach((line, index) => {
+    setTimeout(() => {
+      line.classList.add('visible');
+    }, index * 100);
+  });
+}
 
-  function type() {
-    const current = texts[tIdx];
-    if (!deleting) {
-      el.innerHTML = current.slice(0, cIdx + 1) + '<span class="cursor"></span>';
-      cIdx++;
-      if (cIdx === current.length) {
-        deleting = true;
-        setTimeout(type, 1800);
-        return;
-      }
-    } else {
-      el.innerHTML = current.slice(0, cIdx - 1) + '<span class="cursor"></span>';
-      cIdx--;
-      if (cIdx === 0) {
-        deleting = false;
-        tIdx = (tIdx + 1) % texts.length;
-      }
+// Typing Effect
+function typeText() {
+  const text = "Crafting elegant DevOps solutions | Cloud infrastructure enthusiast | Automation advocate";
+  const typingElement = document.getElementById('typing-text');
+  let charIndex = 0;
+  
+  const type = () => {
+    if (charIndex < text.length) {
+      typingElement.textContent += text[charIndex];
+      charIndex++;
+      setTimeout(type, 30);
     }
-    setTimeout(type, deleting ? 45 : 75);
-  }
+  };
+  
   type();
 }
 
-// ── NAV CLOCK ──
-function updateClock() {
-  const now = new Date();
-  document.getElementById('nav-clock').textContent =
-    String(now.getHours()).padStart(2,'0') + ':' +
-    String(now.getMinutes()).padStart(2,'0') + ':' +
-    String(now.getSeconds()).padStart(2,'0');
-}
-setInterval(updateClock, 1000);
-updateClock();
-
-// ── PARTICLES ──
-(function() {
-  const container = document.getElementById('particles-container');
-  const colors = ['rgba(0,255,65,', 'rgba(0,212,255,', 'rgba(191,0,255,'];
-  for (let i = 0; i < 25; i++) {
-    const p = document.createElement('div');
-    p.className = 'particle';
-    const size = 1 + Math.random() * 3;
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const opacity = 0.3 + Math.random() * 0.4;
-    p.style.cssText = `
-      width: ${size}px; height: ${size}px;
-      left: ${Math.random() * 100}%;
-      background: ${color}${opacity});
-      animation-duration: ${8 + Math.random() * 12}s;
-      animation-delay: ${Math.random() * -15}s;
-    `;
-    container.appendChild(p);
-  }
-})();
-
-// ── SCROLL REVEAL ──
-const revealEls = document.querySelectorAll('.reveal, .timeline-item, .skill-category, .project-card, .cert-card');
-const obs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      // animate skill bars
-      e.target.querySelectorAll('.skill-fill[data-width]').forEach(bar => {
-        bar.style.width = bar.dataset.width + '%';
-      });
-    }
+// Skills Animation
+function animateSkills() {
+  const skillFills = document.querySelectorAll('.skill-fill');
+  skillFills.forEach((fill) => {
+    const width = fill.style.width;
+    fill.style.width = '0%';
+    
+    setTimeout(() => {
+      fill.style.width = width;
+    }, 100);
   });
-}, { threshold: 0.15 });
-revealEls.forEach(el => obs.observe(el));
+}
 
-// Also observe skill categories for bar animation
-document.querySelectorAll('.skill-fill[data-width]').forEach(bar => {
-  const parentObs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        bar.style.width = bar.dataset.width + '%';
+// Timeline Animation on Scroll
+function observeTimeline() {
+  const timelineItems = document.querySelectorAll('.timeline-item');
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.3 });
-  parentObs.observe(bar.closest('.skill-category'));
-});
-
-// ── PIPELINE ANIMATION ──
-(function() {
-  const stages = ['stage-1','stage-2','stage-3','stage-4','stage-5'];
-  let current = 2;
-  setInterval(() => {
-    stages.forEach((id, i) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      if (i < current) { el.className = 'stage-box done'; }
-      else if (i === current) { el.className = 'stage-box active'; }
-      else { el.className = 'stage-box'; }
-    });
-    current = (current + 1) % stages.length;
-  }, 1800);
-})();
-
-// ── EMAILJS INIT ──
-// Replace these three values with your EmailJS credentials:
-//   1. Go to https://www.emailjs.com → sign up free
-//   2. Add an Email Service (Gmail) → copy the Service ID
-//   3. Create an Email Template → copy the Template ID
-//   4. Go to Account → copy your Public Key
-const EMAILJS_PUBLIC_KEY  = 'trYn5e4YzFevA5R1_';   // e.g. 'user_abc123XYZ'
-const EMAILJS_SERVICE_ID  = 'service_bowlgb7';   // e.g. 'service_gmail'
-const EMAILJS_TEMPLATE_ID = 'template_m9eltzb';  // e.g. 'template_portfolio'
-
-(function loadEmailJS() {
-  const s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
-  s.onload = () => emailjs.init(EMAILJS_PUBLIC_KEY);
-  document.head.appendChild(s);
-})();
-
-// ── CONTACT FORM ──
-async function handleContact(e) {
-  e.preventDefault();
-  const btn  = document.getElementById('contact-btn');
-  const name    = document.getElementById('contact-name').value.trim();
-  const email   = document.getElementById('contact-email').value.trim();
-  const subject = document.getElementById('contact-subject').value.trim();
-  const message = document.getElementById('contact-message').value.trim();
-
-  if (!name || !email || !message) {
-    btn.textContent = 'FILL REQUIRED FIELDS ✗';
-    btn.style.borderColor = '#ff4444';
-    btn.style.color = '#ff4444';
-    setTimeout(() => {
-      btn.textContent = 'SEND MESSAGE →';
-      btn.style.borderColor = '';
-      btn.style.color = '';
-    }, 2000);
-    return;
-  }
-
-  btn.textContent = 'SENDING...';
-  btn.style.borderColor = 'var(--neon-cyan)';
-  btn.style.color = 'var(--neon-cyan)';
-  btn.disabled = true;
-
-  try {
-    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name:    name,
-      from_email:   email,
-      subject:      subject || 'Portfolio Contact',
-      message:      message,
-      to_email:     'maniprashathks@gmail.com',
-      reply_to:     email,
-    });
-
-    // ── SUCCESS ──
-    btn.textContent = 'MESSAGE SENT ✓';
-    btn.style.borderColor = 'var(--neon-green)';
-    btn.style.color = 'var(--neon-green)';
-
-    // Clear form
-    document.getElementById('contact-name').value = '';
-    document.getElementById('contact-email').value = '';
-    document.getElementById('contact-subject').value = '';
-    document.getElementById('contact-message').value = '';
-
-  } catch (err) {
-    // ── ERROR ──
-    btn.textContent = 'FAILED — TRY AGAIN ✗';
-    btn.style.borderColor = '#ff4444';
-    btn.style.color = '#ff4444';
-    console.error('EmailJS error:', err);
-  }
-
-  // Reset button after 2 seconds
-  setTimeout(() => {
-    btn.textContent = 'SEND MESSAGE →';
-    btn.style.borderColor = '';
-    btn.style.color = '';
-    btn.disabled = false;
-  }, 2000);
+  }, { threshold: 0.1 });
+  
+  timelineItems.forEach(item => observer.observe(item));
 }
+
+// Smooth Scroll
+function scrollTo(selector) {
+  const element = document.querySelector(selector);
+  element?.scrollIntoView({ behavior: 'smooth' });
+}
+
+// Form Submission
+function handleFormSubmit(event) {
+  event.preventDefault();
+  alert('Thank you! Your message has been received. I will get back to you soon!');
+  event.target.reset();
+}
+
+// Particle Generation
+function createParticles() {
+  const container = document.getElementById('particles-container');
+  for (let i = 0; i < 20; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + '%';
+    particle.style.width = (Math.random() * 4 + 2) + 'px';
+    particle.style.height = particle.style.width;
+    particle.style.background = Math.random() > 0.5 ? 'var(--neon-green)' : 'var(--neon-cyan)';
+    particle.style.animationDuration = (Math.random() * 3 + 2) + 's';
+    particle.style.animationDelay = Math.random() * 2 + 's';
+    container.appendChild(particle);
+  }
+}
+
+// Initialize
+window.addEventListener('load', () => {
+  runBootSequence();
+  typeText();
+  createParticles();
+  observeTimeline();
+});
 </script>
+
 </body>
 </html>
